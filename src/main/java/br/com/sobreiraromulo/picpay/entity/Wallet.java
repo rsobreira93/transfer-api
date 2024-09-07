@@ -35,6 +35,22 @@ public class Wallet {
  @ManyToOne
  private WalletType walletTypeId;
 
+ public boolean isTransferAllowedForWalletType() {
+  return this.walletTypeId.equals(WalletType.Enum.USER.get());
+}
+
+public boolean isBalancerEqualOrGreatherThan(BigDecimal value) {
+  return this.balance.doubleValue() >= value.doubleValue();
+}
+
+public void debit(BigDecimal value) {
+  this.balance = this.balance.subtract(value);
+}
+
+public void credit(BigDecimal value) {
+  this.balance = this.balance.add(value);
+}
+
 
  public Wallet(String fullName, String cpfCnpj, String email, String password, WalletType walletTypeId){
   this.fulName = fullName;

@@ -8,11 +8,21 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.sobreiraromulo.picpay.controller.dtos.CreateWalletDto;
 import br.com.sobreiraromulo.picpay.entity.Wallet;
 import br.com.sobreiraromulo.picpay.service.WalletService;
+import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class WalletController {
  
  @Autowired
@@ -21,7 +31,7 @@ public class WalletController {
 
 
  @PostMapping("/wallets")
- public ResponseEntity<Wallet> createWallet(@RequestBody CreateWalletDto createWalletDto) {
+ public ResponseEntity<Wallet> createWallet(@RequestBody @Valid CreateWalletDto createWalletDto) {
      var wallet = walletService.createWallet(createWalletDto);  
 
      return ResponseEntity.ok(wallet);
