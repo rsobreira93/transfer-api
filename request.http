@@ -1,0 +1,13 @@
+@baseUrl = http://localhost:8080
+
+#@name create wallet
+POST {{baseUrl}}/wallets
+Content-Type: application/json
+
+{
+  "fullName": "Romulo Sobreira",
+  "cpfCnpj": "asasas",
+  "email": "romulo@email.com.br",
+  "password": "123456",
+  "walletTypeId": "USER"
+}
