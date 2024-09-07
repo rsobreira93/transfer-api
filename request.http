@@ -11,3 +11,15 @@ Content-Type: application/json
   "password": "123456",
   "walletTypeId": "USER"
 }
+
+
+########
+#@name tranfer
+POST {{baseUrl}}/transfer
+Content-Type: application/json
+
+{
+  "value": 20,
+  "payer": 5,
+  "payee": 4
+}
